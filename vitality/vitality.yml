@@ -2,13 +2,13 @@ apache:
   if:   which apachectl
   else: sudo apt-get install -y apache2
 
-php:
-  if:   which php
-  else: sudo apt-get install -y php5
-
 vhost:
-  if: cat /etc/apache2/sites-available/server.conf | grep /project/web
+  if: cat /etc/apache2/sites-available/server.conf | grep /project/
   else: cd apache && sudo vitality server.vitality.yml
+
+#php:
+#  if:   which php
+#  else: sudo apt-get install -y php5
 
 #mysql:
 #  if:   which mysql
