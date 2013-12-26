@@ -1,7 +1,7 @@
 project: ProjectVM
 
-memory: 1024
-cpus: 2
+memory: 512
+cpus: 1
 
 ip: 192.168.80.80
 nfs: false
