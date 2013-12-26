@@ -1,0 +1,30 @@
+project: ProjectVM
+
+memory: 1024
+cpus: 2
+
+ip: 192.168.80.80
+nfs: false
+
+sync:
+  ".": "/project"
+
+provision:
+  update:   'sudo apt-get update -y'
+  vitality: 'which vitality || /vagrant/Vagrantfile.install.vitality.sh'
+  install:  '/vagrant/Vagrantfile.install.sh'
+
+ports:
+  80: 8080
+
+gui: false
+vram: 16
+
+box: precise64
+box_url: http://files.vagrantup.com/precise64.box
+guest: ubuntu
+
+acpi: "on"
+ioapic: "on"
+
+nonrotational: true

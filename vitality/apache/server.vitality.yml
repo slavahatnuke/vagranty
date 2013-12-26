@@ -1,0 +1,17 @@
+
+vhost disable default:
+  if:   sudo a2dissite default
+
+vhost remove file:
+  if:  sudo rm /etc/apache2/sites-available/server.conf
+
+vhost update file:
+  if:   cat /etc/apache2/sites-available/server.conf
+  else: sudo cp /vagrant/vitality/apache/server.conf /etc/apache2/sites-available/server.conf
+
+vhost enable:
+  if:   cat /etc/apache2/sites-enabled/server.conf
+  else: sudo a2ensite server.conf
+
+apache reload:
+  if: sudo service apache2 reload

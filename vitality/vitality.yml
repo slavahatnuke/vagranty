@@ -1,0 +1,15 @@
+apache:
+  if:   which apachectl
+  else: sudo apt-get install -y apache2
+
+php:
+  if:   which php
+  else: sudo apt-get install -y php5
+
+vhost:
+  if: cat /etc/apache2/sites-available/server.conf | grep /project/web
+  else: cd apache && sudo vitality server.vitality.yml
+
+#mysql:
+#  if:   which mysql
+#  else: sudo ./mysql/Vagrantfile.install.sh
