@@ -2,18 +2,22 @@ apache:
   if:   which apachectl
   else: sudo apt-get install -y apache2
 
-vhost:
-  if: cat /etc/apache2/sites-available/server.conf | grep /project/
-  else: cd apache && sudo vitality server.vitality.yml
-
 #php:
 #  if:   which php
+#  else: ./php/install.sh
+#
+#php 5.3:
+#  if:   which php
 #  else: sudo apt-get install -y php5
-
+#
 #mysql:
 #  if:   which mysql
 #  else: sudo ./mysql/install.sh
-
+#
 #mongo:
 #  if:   which mongo
 #  else: sudo apt-get install -y mongodb
+
+vhost:
+  if:   cmp /etc/apache2/sites-available/project.conf /vagrant/vitality/apache/project.conf
+  else: cd apache && sudo vitality server.yml
