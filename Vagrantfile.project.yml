@@ -1,6 +1,6 @@
 # Project
 
-project: Vagranty
+project: ProjectVM
 
 memory: 512
 cpus: 1
@@ -13,7 +13,7 @@ sync:
 
 
 provision:
-  vitality: 'which vitality || echo "FAIL"'
+  vitality: 'which vitality || (wget -O - https://raw.githubusercontent.com/slavahatnuke/vitality/master/install/ubuntu.sh | sudo sh)'
 
 ports: []
 
@@ -25,8 +25,3 @@ vram: 16
 box: precise64
 box_url: http://files.vagrantup.com/precise64.box
 guest: ubuntu
-
-acpi: "on"
-ioapic: "on"
-
-nonrotational: true

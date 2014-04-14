@@ -39,14 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     vb.customize ["modifyvm", :id, "--memory", project['memory']]
     vb.customize ["modifyvm", :id, "--cpus", project['cpus']]
-
-    vb.customize ["modifyvm", :id, "--acpi", project['acpi']]
-    vb.customize ["modifyvm", :id, "--ioapic", project['ioapic']]
     vb.customize ["modifyvm", :id, "--vram", project['vram']]
-
-    if project['nonrotational']
-      vb.customize ["storageattach", :id, "--storagectl", "SATA Controller", '--port', '0', '--nonrotational', 'on']
-    end
 
   end
 
