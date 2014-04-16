@@ -1,13 +1,13 @@
 # Project
 
-project: ProjectVM
+project: Project
 
 memory: 512
 cpus: 1
 
-ip:  192.168.80.80
-nfs: false
+ip:  192.168.80.80  # false, public
 
+sync_type: false    # false, rsync, nfs
 sync:
   ".": "/project"
 

@@ -12,8 +12,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.guest = project["guest"]
 
   ## Network
-  if project['ip']
-      config.vm.network :private_network, ip: project['ip']
+  if project['ip'] == 'public'
+        config.vm.network :public_network
+  else
+      if project['ip']
+        config.vm.network :private_network, ip: project['ip']
+      end
   end
 
   ## Network/Ports
@@ -22,9 +26,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ## Sync
-  project["sync"].each do |key, value|
-    config.vm.synced_folder key, value, :nfs => project["nfs"]
+
+  if project["sync_type"]
+      project["sync"].each do |key, value|
+        config.vm.synced_folder key, value, :type => project["sync_type"]
+      end
+  else
+      project["sync"].each do |key, value|
+        config.vm.synced_folder key, value
+      end
   end
+
 
   ## Provision
   project["provision"].each do |key, value|
