@@ -13,7 +13,8 @@ sync:
 
 provision:
   vitality: 'which vitality || (wget -O - https://raw.githubusercontent.com/slavahatnuke/vitality/master/install/ubuntu.sh | sudo sh)'
-
+  provision: 'cd /vagrant && vitality provision'
+  
 ports: []
 
 # System
