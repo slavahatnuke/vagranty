@@ -10,7 +10,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = project["box"]
   config.vm.box_url = project["box_url"]
   config.vm.guest = project["guest"]
-  config.vm.hostname = project["host"] # vagrant plugin install vagrant-hostsupdater
+
+  if project["host"]
+    config.vm.hostname = project["host"] # vagrant plugin install vagrant-hostsupdater
+    config.hostsupdater.remove_on_suspend = true
+  end
 
   ## Network
   if project['ip'] == 'public'
